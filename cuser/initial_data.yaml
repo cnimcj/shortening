@@ -1,0 +1,30 @@
+- fields: {code: 2a02634f, used: false}
+  model: cuser.invite
+  pk: 1
+- fields: {code: 2b2bdb9a, used: false}
+  model: cuser.invite
+  pk: 2
+- fields: {code: 898037f3, used: false}
+  model: cuser.invite
+  pk: 3
+- fields: {code: d22038dc, used: false}
+  model: cuser.invite
+  pk: 4
+- fields: {code: 78e4cd12, used: false}
+  model: cuser.invite
+  pk: 5
+- fields: {code: 2e2fb701, used: false}
+  model: cuser.invite
+  pk: 6
+- fields: {code: 7eaf092a, used: false}
+  model: cuser.invite
+  pk: 7
+- fields: {code: 931ebabf, used: false}
+  model: cuser.invite
+  pk: 8
+- fields: {code: c92fffb3, used: false}
+  model: cuser.invite
+  pk: 9
+- fields: {code: 26b4e12f, used: false}
+  model: cuser.invite
+  pk: 10

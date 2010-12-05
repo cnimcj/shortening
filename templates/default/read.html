@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block script %}
+<script src="/media/js/common.js" language="javascript"></script>
+<script src="/media/js/jquery.clipboard.min.js" language="javascript"></script>
+<script>
+    function copy ( url )
+{
+    alert($.clipboard ( url ));
+    alert('复制成功:' + url);
+}
+</script>
+{% endblock %}
+{% block main %}
+	<div class="shorteningbox">
+    	    <form action="#" method="POST" onsubmit="clickShortening (); return false;">
+		<textarea class="shortening_textarea"></textarea>
+	        <div id="buttons">
+                    {% ifnotequal shortening None %}
+                    <div id="result">
+                       <a href="{{shortening.get_shorcut}}">{{shortening.get_shortcut}}</a>
+                       <span onclick="copy ( '{{shortening.get_shortcut}}' ); return false;">复制</span>
+                    </div>
+                    {% endifnotequal %}
+                    <button onclick="clickShortening ();return false;">缩短</button>
+                    {% ifequal None user %}
+                    <!-- <button>登陆</button> -->
+                    {% endifequal %}
+                </div>
+	    </form>
+	</div>
+        <div class="shortenings">
+            <table>
+                <tr>
+                    <th>点击</td>
+                    <th>网址</td>
+                    <th>日期</td>
+                    <th>选项</td>
+                </tr>
+                <tbody>
+{% for url in urls %}
+                    <tr>
+                        <td>{{url.hits}}</td>
+                        <td>
+                            <p><a href="{{url.get_shortcut}}">{{url.title}}</a></p>
+                            <p><a href="{{url.url}}">{{url.url}}</a></p>
+                        </td>
+                        <td>{{url.date_created|date:"m-d H:s"}}</td>
+                        <td></td>
+                    </tr>
+{% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

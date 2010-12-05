@@ -1,0 +1,9 @@
+{% extends "base.html" %} 
+{% block main %}
+<form method="post" action="{% url auth_create %}">
+    {{ form.as_p }}
+    <div id="buttons">
+    <button>登陆</button>
+    </div>
+</form>
+{% endblock %}

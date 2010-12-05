@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="left statistics">
+    <dl>
+        <dt>Archives</dt>
+        <dd>
+            <ul>
+                {% for archive in archives %}
+                <li>
+                {{ archive }}
+                </li>
+                {% endfor %}
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div class="right statistics">
+    <div class="person">
+        <dl>
+            <dt>千IP收益</dt>
+            <dd>{{ total }}</dd>
+        </dl>
+        <dl>
+            <dt>新手红包总收入</dt>
+            <dd>{{ newbie_reward }}</dd>
+        </dl>
+        <dl>
+            <dt>推荐人收益</dt>
+            <dd> {{ recommender_reward }} </dd>
+        <dl>
+            <dt>总收益</dt>
+            <dd></dd>
+        </dl>
+    </div>
+    <div class="statistics_hit">
+        {% include "shortening.html" %}
+    </div>
+</div>
+<div class="clear"></div>
+{% endblock %}

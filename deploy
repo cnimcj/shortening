@@ -1,0 +1,4 @@
+#!/bin/sh
+scp -r . cjwei@imcj.name:~/hihiurl.com/shortening/
+scp ./deploy_settings.py cjwei@imcj.name:~/hihiurl.com/shortening/settings.py
+ssh cjwei@imcj.name "pkill python"

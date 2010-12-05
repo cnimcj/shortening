@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.left { float: left; }
+.right { float: right; }
+.clear { float: none; clear: both; display: block; margin: 0px; padding: 0px;}
+.statistics dt { border-bottom: 1px solid #CCC; line-height: 30px; width: 180px; }
+.statistics div { width: 750px; }
+.person dt { border: none; line-height: 100%; }
+
+body { margin: 0px; font-size: 13px; font-family:Arial, sans-serif; }
+form  { padding: 25px; margin: 0px auto 0px auto; width: 500px; border: 1px solid #CCC;  }
+input { font-size: 14px; width: 95%; border: 1px solid #CCC; padding: 8px; }
+/* button { border: 1px solid #CCC; background-color: #FFF; padding: 8px; width: 100px; font-size: 14px; } */
+label { font-size: 14px; width: 150px; display: block; }
+#result { border: 1px solid #CCCCCC; width: 530px; height: 30px; line-height: 30px; text-align: left; text-indent: 1em; float: left; margin-left: 29px; }
+#result span { float: right; margin-right: 1em; }
+#buttons { text-align: right; margin-right: 33px; margin-top: 10px; }
+#buttons button { background-image: url(button_background.png); width: 87px; height: 32px; border: none; }
+#top { background-image: url("top_background.png"); width: 100%; height: 34px; line-height: 34px; text-indent: 1em; }
+#main { width: 959px; margin: 20px auto 20px auto; }
+#bottom { background-image: url(bottom.png); width: 959px; height: 250px; margin: 0px auto 0px auto; }
+.shortening_textarea { border: 1px solid #ced5d9; background-color: #fafbee; width: 627px; height: 158px; margin: 30px 0px 0px 28px; font-size: 50px; }
+.shorteningbox { background-image: url(box.png); width: 691px; height: 277px; }
+.shorteningbox form { padding: 0px; margin: 0px; width: 100%; border: none; }
+.sitemap { padding: 20px 0px 0px 20px; }
+.strong { font-weight: bold; }
+
+.shortenings { width: 100%; }
+.shortenings table { border: none; padding: 0px; width: 100%; }
+.shortenings table th { background-color: #EFEFEF; height: 30px; color: #555; text-indent: 5px; }
+.shortenings table td { height: 40px; text-indent: 5px; }
+#bottom ul { width: 120px; float: left; }
+#bottom a:link { color: #888; }
+ul, li { margin: 0px; padding: 0px; list-style: none; line-height: 200% }

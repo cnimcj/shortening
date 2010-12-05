@@ -71,13 +71,18 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.csrf.CsrfResponseMiddleware',
+#'django.middleware.csrf.CsrfViewMiddleware',
+#    'django.middleware.csrf.CsrfResponseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'shortening.urls'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'cuser.context_processors.auth',
+)
 
 TEMPLATE_DIRS = (
     os.path.join ( ROOT, 'templates' )
@@ -91,8 +96,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'ittybitty',
+    'conf',
     'cuser',
+    'statistics',
+    'ittybitty',
 )
 
+
 sys.path.insert ( 0, ROOT )
+AUTH_PROFILE_MODULE = 'cuser.UserProfile'
+
+RECOMMENDER_REWARD = 10.0
+NEWBIE_REWARD = 5.0

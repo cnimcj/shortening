@@ -1,0 +1,65 @@
+        <link rel="stylesheet" type="text/css" href="/media/statistics/history/history.css" />
+        <script type="text/javascript" src="/media/statistics/history/history.js"></script>
+        <script type="text/javascript" src="/media/statistics/swfobject.js"></script>
+        <script type="text/javascript">
+            <!-- For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. --> 
+            var swfVersionStr = "10.0.0";
+            <!-- To use express install, set to playerProductInstall.swf, otherwise the empty string. -->
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+            var attributes = {};
+            attributes.id = "Shortening";
+            attributes.name = "Shortening";
+            attributes.align = "middle";
+            swfobject.embedSWF(
+                "/media/statistics/Shortening.swf", "flashContent", 
+                "100%", "300", 
+                swfVersionStr, xiSwfUrlStr, 
+                flashvars, params, attributes);
+			swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+        </script>
+        <div id="flashContent">
+        	<p>
+	        	To view this page ensure that Adobe Flash Player version 
+				10.0.0 or greater is installed. 
+			</p>
+			<script type="text/javascript"> 
+				var pageHost = ((document.location.protocol == "https:") ? "https://" :	"http://"); 
+				document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+								+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+			</script> 
+        </div>
+	   	
+       	<noscript>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="600" height="300" id="Shortening">
+                <param name="movie" value="Shortening.swf" />
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="sameDomain" />
+                <param name="allowFullScreen" value="true" />
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="Shortening.swf"5width="600" height="300">
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="allowScriptAccess" value="sameDomain" />
+                    <param name="allowFullScreen" value="true" />
+                <!--<![endif]-->
+                <!--[if gte IE 6]>-->
+                	<p> 
+                		Either scripts and active content are not permitted to run or Adobe Flash Player version
+                		10.0.0 or greater is not installed.
+                	</p>
+                <!--<![endif]-->
+                    <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+                    </a>
+                <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
+            </object>
+	    </noscript>		

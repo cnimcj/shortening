@@ -1,0 +1,34 @@
+[
+  {
+    "pk": 1, 
+    "model": "auth.group", 
+    "fields": {
+      "name": "\u4ed8\u8d39\u4f1a\u5458", 
+      "permissions": []
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "auth.group", 
+    "fields": {
+      "name": "\u9ec4\u91d1\u4f1a\u5458", 
+      "permissions": []
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "auth.group", 
+    "fields": {
+      "name": "\u7816\u77f3\u4f1a\u5458", 
+      "permissions": []
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "auth.group", 
+    "fields": {
+      "name": "\u9500\u552e", 
+      "permissions": []
+    }
+  }, 
+]

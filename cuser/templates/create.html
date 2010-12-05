@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block main %}
+<form method="post" action="{% url user_create %}">
+    {{ form.as_p }}
+    <button>注册</button>
+</form>
+{% endblock %}

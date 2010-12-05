@@ -1,16 +1,24 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.db.models import Q
-from models import IttyBittyURL, IPStatistics, VisitStatistics
+from models import IttyBittyURL
+from statistics.models import Visit, IP
 from utils import completion_protocol
-import simplejson
 from datetime import datetime
 
-# TODO Shortening service
+import time
+import simplejson
+
+# FIXME if create shortening is not contain white list
 def shortening_create ( request ):
-    result = {}
+    result = {
+        'shortening' : '',
+        'url' : '',
+        'date' : '',
+    }
     bitty_url = None
     if "POST" == request.method:
+#import dtest; dtest.set_trace ()
         raw_url = request.POST.get ( 'raw_url', '' )
         raw_url = completion_protocol ( raw_url )
         try:
@@ -21,17 +29,21 @@ def shortening_create ( request ):
             if ( request.user.is_authenticated () ):
                 bitty_url.user = request.user
             bitty_url.save ()
-        
-        result['result'] = not bitty_url == None and bitty_url.shortcut
+        result['shortening'] = bitty_url.shortcut
+        result['url'] = bitty_url.url
+        result['date'] = str ( int ( time.mktime ( bitty_url.date_created.timetuple () ) ) )
+        result['title'] = bitty_url.title
+#        result['referer'] = 
+# result['result'] = not bitty_url == None and bitty_url.shortcut
     return HttpResponse ( simplejson.dumps ( result ) )
 
 # FIXME Refactoring models move business to domain business
 def shortening_read ( request, shortening ):
     bitty_url = get_object_or_404 ( IttyBittyURL, shortcut = shortening )
     try:
-        ip = IPStatistics.objects.get ( url = bitty_url )
-    except IPStatistics.DoesNotExist:
-        IPStatistics ( url = bitty_url, ip = request.META['REMOTE_ADDR'] ).save ()
+        ip = IP.objects.get ( Q ( url = bitty_url ), Q ( ip = request.META['REMOTE_ADDR'] ) )
+    except IP.DoesNotExist:
+        IP ( user = request.user, url = bitty_url, ip = request.META['REMOTE_ADDR'] ).save ()
         
     return render_to_response (
         'ittybitty/read.html',
