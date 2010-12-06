@@ -44,14 +44,24 @@ class Invite ( models.Model ):
     class Meta:
         verbose_name = u"邀请码"
         verbose_name_plural = u"邀请码"
+#db_table = u"cuser_invite"
+#        app_label = u"系统"
 
     def __unicode__ ( self ):
         return self.code
 
 class GroupProfile ( models.Model ):
     group  = models.ForeignKey ( Group )
-    income = models.DecimalField ( u'收益', max_digits = 10, decimal_places = 2 )
+    income = models.DecimalField ( u'收益', max_digits = 10, decimal_places = 2, default = 0 )
+    pay_one = models.DecimalField ( u"一个月", max_digits = 10, decimal_places = 2, default = 0 )
+    pay_three = models.DecimalField ( u"一季度", max_digits = 10, decimal_places = 2, default = 0 )
+    twelve = models.DecimalField ( u"一年", max_digits = 10, decimal_places = 2, default = 0 )
     
+    class Meta:
+        verbose_name = u"会员组配置"
+        verbose_name_plural = u"会员组配置"
+#        db_table = u"cuser_groupprofile"
+#        app_label = u"系统"
 
 def user_post_save ( sender, instance, created = None, **kwargs ):
     if created:

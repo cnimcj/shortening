@@ -1,3 +1,4 @@
+#! -*- encoding:utf-8 -*-
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 from django.db import models
@@ -53,11 +54,35 @@ class IttyBittyURL(models.Model):
         verbose_name = 'Itty Bitty URL'
         verbose_name_plural = 'Itty Bitty URLs'
 
+class WhiteListManager ( models.Manager ):
+    def exist ( self, url ):
+        def fetch_domain ( url ):
+            return re.findall("http://(.+?)\/", url )[0]
+        try:
+            super ( WhiteListManager, self ).get_query_set ().get (
+                Q ( url__icontains = fetch_domain ( url ) ) | Q ( url = fetch_domain ( url ) )
+            )
+        except:     
+            return False
+
+        return True
+
 class URLWhiteList ( models.Model ):
+    """
+    >>> white = URLWhiteList ( url = "www.qq.com" )
+    >>> white.save ()
+    >>> URLWhiteList.objects.exist ( "http://www.qq.com" )
+    True
+    """
     url = models.URLField ( unique = True )
+    objects = WhiteListManager ()
 
     def __unicode__ ( self ):
         return self.url
+
+    class Meta:
+        verbose_name = u"白名单"
+        verbose_name_plural = u"白名单"
 
 def set_shortcut(sender, instance, created, *args, **kwargs):
     """

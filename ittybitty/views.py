@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.db.models import Q
 from models import IttyBittyURL
 from statistics.models import Visit, IP
+from ittybitty.models import URLWhiteList
 from utils import completion_protocol
 from datetime import datetime
 
@@ -40,11 +41,12 @@ def shortening_create ( request ):
 # FIXME Refactoring models move business to domain business
 def shortening_read ( request, shortening ):
     bitty_url = get_object_or_404 ( IttyBittyURL, shortcut = shortening )
-    try:
-        ip = IP.objects.get ( Q ( url = bitty_url ), Q ( ip = request.META['REMOTE_ADDR'] ) )
-    except IP.DoesNotExist:
-        IP ( user = request.user, url = bitty_url, ip = request.META['REMOTE_ADDR'] ).save ()
-        
+#    import dtest; dtest.set_trace ()
+    if bitty_url.user and URLWhiteList.objects.exist ( bitty_url.url ):
+        try:
+            IP ( user = request.user, url = bitty_url, ip = request.META['REMOTE_ADDR'] ).save ()
+        except:
+            pass
     return render_to_response (
         'ittybitty/read.html',
         { 'url' : bitty_url },

@@ -3,7 +3,7 @@
 __test__ = { 'doctest' : """
 Completion url
 
->>> from util import completion_protocol
+>>> from utils import completion_protocol
 >>> completion_protocol ( 'qq.com' )
 'http://qq.com'
 
@@ -22,16 +22,16 @@ Test views
 >>> c.login ( username = 'admin', password = '111' )
 True
 >>> first_shortening = second_shortening = thirdly_shortening = {}
->>> r = c.post ( '/shortening/create/', { 'raw_url' : 'http://www.baidu.com' } )
+>>> r = c.post ( '/shortening/create/', { 'raw_url' : 'http://www.baidu.com/' } )
 >>> j = simplejson.loads ( r.content )
 >>> first_shortening = j
 >>> first_shortening['shortening']
-'0Av'
->>> r = c.post ( '/shortening/create/', { 'raw_url' : 'http://www.qq.com' } )
+u'0Av'
+>>> r = c.post ( '/shortening/create/', { 'raw_url' : 'http://www.qq.com/' } )
 >>> j = simplejson.loads ( r.content )
 >>> second_shortening = j
 >>> second_shortening['shortening']
-'0Aw'
+u'0Aw'
 >>> len ( second_shortening['date'] )
 10
 
@@ -49,5 +49,15 @@ u'http://www.baidu.com'
 u'127.0.0.1'
 >>> day = Day.objects.get ( pk = 1 )
 >>> day.hits
+1
+
+>>> response = c.get ( "/0Av" ) 
+>>> response = c.get ( "/0Av" )
+>>> response.context['url'].user.get_profile().hits
+0
+>>> from ittybitty.models import URLWhiteList
+>>> URLWhiteList ( url = "www.baidu.com" ).save ()
+>>> response = c.get ( "/0Av" )
+>>> response.context['url'].user.get_profile().hits
 1
 """}

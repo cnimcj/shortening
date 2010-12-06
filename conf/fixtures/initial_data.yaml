@@ -1,0 +1,6 @@
+- fields: {help_text: "\u65B0\u624B\u7EA2\u5305", key: newbie_bonus, value: '5.00'}
+  model: conf.config
+  pk: 1
+- fields: {help_text: "\u63A8\u8350\u4EBA\u5956\u52B1", key: recommender_bonus, value: '10.00'}
+  model: conf.config
+  pk: 2
